@@ -1,5 +1,5 @@
 {
-  "name": "A world im metric",
+  "name": "A world in metric",
   "version": "1.0",
   "description": "Convert US cups metric measures.",
   "content_scripts": [{

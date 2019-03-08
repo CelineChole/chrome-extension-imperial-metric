@@ -11,7 +11,7 @@ function selectedWord() {
     }
     chrome.runtime.sendMessage(message, function(response) {
       console.log('response ', response)
-      window.getSelection().anchorNode.nodeValue = '❤️'
+      // window.getSelection().anchorNode.nodeValue = ''
     })
   }
 }

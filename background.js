@@ -17,51 +17,52 @@ function receiver(request, sender, sendResponse) {
   let value = sanitizedString.replace(/[^/\d]/g, "");
 
   switch (value) {
-    case '1/2':
-      value = 0.5
+    case "1/2":
+      value = 0.5;
       break;
-    case '1/3':
-      value = 0.33
+    case "1/3":
+      value = 0.33;
       break;
-    case '1/4': 
-      value = 0.25
+    case "1/4":
+      value = 0.25;
       break;
-    case '1/5':
-      value = 0.2
-      break
-    case '1/6': 
-      value = 0.16
+    case "1/5":
+      value = 0.2;
       break;
-    case '1/8':
-      value = 0.125
-    default: ''
+    case "1/6":
+      value = 0.16;
+      break;
+    case "1/8":
+      value = 0.125;
+    default:
+      "";
   }
-  if (value === '1/4') {
-    value = 0.25
+  if (value === "1/4") {
+    value = 0.25;
   }
   value = parseFloat(value);
 
   console.log(typeof value, value);
-  let translatedMeasure
+  let convertedMeasure;
 
   switch (unit) {
     case "cup":
-      translatedMeasure = Math.round(value * 236.588);
-      translatedMeasure = `${translatedMeasure} mL`
-      console.log("translatedMeasure :", translatedMeasure);
+      convertedMeasure = Math.round(value * 236.588);
+      convertedMeasure = `${convertedMeasure} mL`;
+      console.log("translatedMeasure :", convertedMeasure);
       break;
     case "pound":
-      translatedMeasure = Math.round(value * 453.592);
-      translatedMeasure = `${translatedMeasure} grams`
+      convertedMeasure = Math.round(value * 453.592);
+      convertedMeasure = `${convertedMeasure} grams`;
       break;
     case "ounce":
-      translatedMeasure = Math.round(value * 28.3495);
-      translatedMeasure = `${translatedMeasure} grams`
-      break
+      convertedMeasure = Math.round(value * 28.3495);
+      convertedMeasure = `${convertedMeasure} grams`;
+      break;
 
     default:
       sendResponse("Can't convert");
   }
 
-  sendResponse(translatedMeasure);
+  sendResponse(convertedMeasure);
 }

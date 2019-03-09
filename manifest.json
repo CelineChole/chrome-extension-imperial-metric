@@ -6,7 +6,14 @@
     "matches": [
       "<all_urls>"
     ],
-    "js": ["content.js"]
+    "js": [
+      "jquery-3.3.1.min.js",
+      "toastr.min.js",
+      "content.js"
+    ],
+    "css": [
+      "toastr.min.css"
+    ]
   }],
   "background": {
     "scripts": ["background.js"]

@@ -1,4 +1,4 @@
-# chrome-extension-imperial-metric
+# Chrome extension imperial metric
 
 A browser extension for Chrome that allows to convert imperial units into the metric system. So far the extension supports pounds, ounces, quarts and cups.
 

@@ -6,15 +6,28 @@ let word = "";
 window.enabled = false
 window.convertedMeasure = 0
 
-function isEnabled() {
-  return enabled;
-}
+chrome.browserAction.onClicked.addListener(buttonClicked)
 
-function setEnabled(newStatus) {
-  enabled = newStatus;
+function buttonClicked() {
+  enabled = !enabled
+
+  if (enabled) {
+    chrome.browserAction.setBadgeText({text: 'on'})
+    // chrome.browserAction.setIcon({path: 'Cooking-icon.png'})
+  } else {
+    chrome.browserAction.setBadgeText({text: ''})
+    // chrome.browserAction.setIcon({path: 'Cooking-icon-bw-32.png'})
+    
+  }
 }
 
 function receiver(request, sender, sendResponse) {
+  if (!enabled) {
+    sendResponse('Disabled')
+    return
+  }
+
+
   word = request.text;
   let sanitizedString = word.trim().toLowerCase();
 
@@ -34,6 +47,7 @@ function receiver(request, sender, sendResponse) {
       convertedMeasure = `${convertedMeasure} mL`;
       break;
     case "pound":
+    case "lb":
       convertedMeasure = Math.round(value * 453.592);
       convertedMeasure = `${convertedMeasure} grams`;
       break;

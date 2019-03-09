@@ -35,7 +35,7 @@ function receiver(request, sender, sendResponse) {
   let value = sanitizedString.replace(/[^/\d]/g, "");
 
   if (value === null) {
-    convertedMeasure = "Can't convert"o
+    convertedMeasure = "Can't convert"
   }
 
   let split = value.split('/');

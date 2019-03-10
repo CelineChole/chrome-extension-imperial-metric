@@ -27,23 +27,27 @@ function receiver(request, sender, sendResponse) {
     return
   }
 
-
   word = request.text;
   let sanitizedString = word.trim().toLowerCase();
 
   let unit = sanitizedString.replace(/[^a-zA-Z]/g, "");
-  let value = sanitizedString.replace(/[^/\d]/g, "");
+  // ¼½¾ have the continuous Unicode values from \u00BC to \u00BE
+  // ⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞ have the continuous Unicode values from \u2150 to \u215E
+  let value = sanitizedString.replace(/[^\d\u00BC-\u00BE\u2150-\u215E]/g, "");
 
-  if (value === null) {
-    convertedMeasure = "Can't convert"
+  if (!value) {
+    convertedMeasure = "Can't convert";
+    console.log('inside value')
+    sendResponse(convertedMeasure);
+    return
   }
 
+  
+  // value = parseFloat(value);
   let split = value.split('/');
   if (split.length > 1) {
     value = split[0] / split[1];
   }
-  
-  value = parseFloat(value);
 
   switch (value) {
     case '¾':
@@ -55,8 +59,6 @@ function receiver(request, sender, sendResponse) {
     case '¼':
       value = 0.25
       break;
-    default:
-    convertedMeasure = "Can't convert"
   }
 
   switch (unit) {

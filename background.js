@@ -59,6 +59,51 @@ function receiver(request, sender, sendResponse) {
     case '¼':
       value = 0.25
       break;
+    case '⅐':
+      value = 0.14
+      break;
+    case '⅑':
+      value = 0.11
+      break;
+    case '⅒':
+      value = 0.1
+      break;
+    case '⅓':
+      value = 0.33
+      break;
+    case '⅔':
+      value = 0.66
+      break;
+    case '⅕':
+      value = 0.2
+      break;
+    case '⅖':
+      value = 0.4
+      break;
+    case '⅗':
+      value = 0.6
+      break;
+    case '⅘':
+      value = 0.8
+      break;
+    case '⅙':
+      value = 0.16
+      break;
+    case '⅚':
+      value = 0.83
+      break;
+    case '⅛':
+      value = 0.125
+      break;
+    case '⅜':
+      value = 0.375
+      break;
+    case '⅝':
+      value = 0.625
+      break;
+    case '⅞':
+      value = 0.875
+      break;
   }
 
   switch (unit) {

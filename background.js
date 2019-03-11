@@ -33,7 +33,7 @@ function receiver(request, sender, sendResponse) {
   let unit = sanitizedString.replace(/[^a-zA-Z]/g, "");
   // ¼½¾ have the continuous Unicode values from \u00BC to \u00BE
   // ⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞ have the continuous Unicode values from \u2150 to \u215E
-  let value = sanitizedString.replace(/[^\d\u00BC-\u00BE\u2150-\u215E]/g, "");
+  let value = sanitizedString.replace(/[^/\d\u00BC-\u00BE\u2150-\u215E]/g, "");
 
   if (!value) {
     convertedMeasure = "Can't convert";
